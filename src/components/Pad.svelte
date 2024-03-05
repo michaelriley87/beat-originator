@@ -19,6 +19,6 @@
         transition: background-color 0.3s;
     }
     .pad.active {
-        background-color: var(--pad-active-color, #f00);
+        background-color: var(--pad-active-color, rgb(56, 61, 215));
     }
 </style>
