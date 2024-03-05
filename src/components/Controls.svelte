@@ -1,13 +1,17 @@
 <script>
-    let isPlaying = false;
+    import { isPlaying, playSequence, stopSequence } from '../lib/store';
 
-    function togglePlay() {
-        isPlaying = !isPlaying;
+    function togglePlayback() {
+        if ($isPlaying) {
+            stopSequence();
+        } else {
+            playSequence();
+        }
     }
 </script>
 
 <svelte>
-    <button on:click={togglePlay}>
-        {isPlaying ? "Stop" : "Play"}
+    <button on:click={togglePlayback}>
+        {$isPlaying ? 'Stop' : 'Play'}
     </button>
 </svelte>
