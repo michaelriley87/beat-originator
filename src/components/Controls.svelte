@@ -1,6 +1,10 @@
 <script>
-    import { isPlaying, playSequence, stopSequence, tempo, swing, volume } from '../lib/store';
-    function togglePlayback() {
+    import { audioContext, isPlaying, playSequence, stopSequence, tempo, swing, volume } from '../lib/store';
+
+    async function togglePlayback() {
+        if (audioContext.state === 'suspended') {
+            await audioContext.resume();
+        }
         if ($isPlaying) {
             stopSequence();
         } else {
@@ -10,9 +14,11 @@
     function handleTempoChange(event) {
         tempo.set(+event.target.value);
     }
+
     function handleSwingChange(event) {
         swing.set(+event.target.value);
     }
+
     function handleVolumeChange(event) {
         volume.set(+event.target.value);
     }
